@@ -10,36 +10,68 @@ namespace AndFir
 {
     public partial class MainPage : ContentPage
     {
+        Button box_btn, entry_btn, date_btn,ss_btn;
         public MainPage()
         {
-            Button box_btn = new Button
+            box_btn = new Button
             {
                 Text = "Boxview",
-                BackgroundColor = Color.Aquamarine
+                BackgroundColor = Color.Red,
+                TextColor=Color.Black
             };
+            box_btn.Clicked += Start_Pages;
 
-            Button entry_btn = new Button
+            entry_btn = new Button
             {
                 Text = "Entry",
-                BackgroundColor = Color.Red
+                BackgroundColor = Color.Orange,
+                TextColor = Color.Black
             };
-            entry_btn.Clicked += Entry_btn_Clicked;
+            entry_btn.Clicked += Start_Pages;
+
+            date_btn = new Button
+            {
+                Text = "Date/Time",
+                BackgroundColor = Color.Yellow,
+                TextColor = Color.Black
+            };
+            date_btn.Clicked += Start_Pages;
+
+            ss_btn = new Button
+            {
+                Text = "Stepper-Slider",
+                BackgroundColor = Color.Green,
+                TextColor = Color.Black
+            };
+            ss_btn.Clicked += Start_Pages;
+
             StackLayout st = new StackLayout
             {
-                Children = { box_btn, entry_btn }
+                Children = { box_btn, entry_btn, date_btn, ss_btn }
             };
             st.BackgroundColor = Color.Black;
             Content = st;
         }
 
-        private async void Entry_btn_Clicked(object sender, EventArgs e)
+        private async void Start_Pages(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Entry_Page());
-        }
-
-        private async void Box_btn_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Box_Page());
+            Button btn = (Button)sender;
+            if (sender == date_btn)
+            {
+                await Navigation.PushAsync(new Date_Page());
+            }
+            else if (sender == entry_btn)
+            {
+                await Navigation.PushAsync(new Entry_Page());
+            }
+            else if (sender == box_btn)
+            {
+                await Navigation.PushAsync(new Box_Page());
+            }
+            else if (sender == ss_btn)
+            {
+                await Navigation.PushAsync(new Stp_Sl_Page());
+            }
         }
     }
 }
