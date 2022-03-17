@@ -15,6 +15,7 @@ namespace AndFir
         public Timer_Page()
         {
             InitializeComponent();
+            BackgroundColor = Color.LightBlue;
         }
         bool on_off = true;
 

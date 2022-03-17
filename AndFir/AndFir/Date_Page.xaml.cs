@@ -20,6 +20,7 @@ namespace AndFir
             lbl = new Label
             {
                 Text = "Vali mingi kuupaev voi kellaaeg",
+                TextColor=Color.Black,
                 BackgroundColor = Color.BurlyWood
             };
 
@@ -27,14 +28,16 @@ namespace AndFir
             {
                 Format = "D", //format daty
                 MinimumDate = DateTime.Now.AddDays(-5),
-                MaximumDate = DateTime.Now.AddDays(15)
+                MaximumDate = DateTime.Now.AddDays(15),
+                TextColor = Color.Black
             };
             dp.DateSelected += Dp_DateSelected;
 
             tp = new TimePicker
             {
-                Time = new TimeSpan(12, 30, 00)
-            };
+                Time = new TimeSpan(12, 30, 00),
+                TextColor = Color.Black
+        };
             tp.PropertyChanged += Tp_PropertyChanged;
 
             AbsoluteLayout abs = new AbsoluteLayout
@@ -50,17 +53,20 @@ namespace AndFir
             AbsoluteLayout.SetLayoutBounds(tp, new Rectangle(0.1, 0.3, 200, 100));
             AbsoluteLayout.SetLayoutFlags(tp, AbsoluteLayoutFlags.PositionProportional);
             Content = abs;
+            BackgroundColor = Color.LightYellow;
         }
 
         private void Tp_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             lbl.Text = "Oli valitud aeg: " + dp.Date.ToString("d") + " " + tp.Time/*+"\n"+"Timer: "*/;
             TimerSec();
+            lbl.TextColor = Color.Black;
         }
 
         private void Dp_DateSelected(object sender, DateChangedEventArgs e)
         {
             lbl.Text = "Oli valitud paev: " + e.NewDate.ToString("d") + " " + tp.Time;
+            lbl.TextColor = Color.Black;
         }
 
         private async void TimerSec()

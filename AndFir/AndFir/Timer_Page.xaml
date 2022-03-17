@@ -8,19 +8,22 @@
                 <Label x:Name="lbl"
                    Text="Valjuta nuppule ja siia"
                    FontSize="Medium"
-                   BackgroundColor="Beige">
+                       TextColor="Black"
+                   BackgroundColor="LightCyan">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </Label.GestureRecognizers>
                 </Label>
                 <Button x:Name="timer_btn"
                     Text="Naita info"
+                        BackgroundColor="Cyan"
                     FontSize="Large"
                     Clicked="timer_btn_Clicked">
                 </Button>
             </FlexLayout>
             <Button x:Name="tagasi"
                     Text="Tagasi"
+                    BackgroundColor="BlueViolet"
                     FontSize="Large"
                     Clicked="tagasi_Clicked">
             </Button>

@@ -29,7 +29,7 @@ namespace AndFir
                 Minimum = 0,
                 Maximum = 100,
                 Value = 50,
-                MaximumTrackColor=Color.Blue,
+                MaximumTrackColor=Color.Red,
                 MinimumTrackColor=Color.Green,
                 ThumbColor=Color.Purple //chvet begunka
             };
@@ -40,15 +40,17 @@ namespace AndFir
                 Maximum = 100,
                 Increment = 10,
                 HorizontalOptions = LayoutOptions.Center
+                
             };
             stp.ValueChanged += Stp_ValueChanged;
-
+            BackgroundColor = Color.LightGreen;
             this.Content = new StackLayout { Children = { sl, lbl, stp } };
         }
 
         private void Stp_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             lbl.Text = String.Format("Slideri vaartus on {0:F1}", e.NewValue);
+            lbl.TextColor = Color.DarkGreen;
             lbl.FontSize = e.NewValue;
             lbl.Rotation = e.NewValue * 3.6;
         }
@@ -56,6 +58,7 @@ namespace AndFir
         private void Sl_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             lbl.Text = String.Format("Slideri vaartus on {0:F1}",e.NewValue);
+            lbl.TextColor = Color.DarkGreen;
             lbl.FontSize = e.NewValue;
             lbl.Rotation = e.NewValue * 3.6;
         }

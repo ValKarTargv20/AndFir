@@ -19,11 +19,13 @@ namespace AndFir
             lbl = new Label
             {
                 Text = "Pealkiri",
-                TextColor = Color.Red
+                TextColor = Color.Black
+                
             };
             editor = new Editor
             {
                 Placeholder = "Sisesta mingi text siia",
+                PlaceholderColor=Color.Black,
                 TextColor = Color.Black,
                 BackgroundColor = Color.Yellow,
                 Keyboard = Keyboard.Email //dlja klaviatury, pozvoljaet usovershenstvovat' klaviaturu i dobavit' @
@@ -31,6 +33,7 @@ namespace AndFir
             editor.TextChanged += Editor_TextChanged;
             StackLayout st = new StackLayout { Children = { editor, lbl } };
             Content = st;
+            BackgroundColor = Color.LightCoral;
         }
 
         int i = 0;

@@ -25,6 +25,7 @@ namespace AndFir
             tap.Tapped += Tap_Tapped;
             box.GestureRecognizers.Add(tap);
 
+            BackgroundColor = Color.LightSalmon;
             StackLayout st = new StackLayout { Children = { box } };
             Content = st;
 
