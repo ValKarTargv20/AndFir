@@ -17,7 +17,7 @@
 
     <StackLayout Margin="10">
         <BoxView x:Name="box"
-                 Color="Black"
+                 Color="LightBlue"
                  VerticalOptions="FillAndExpand" />
 
         <Slider x:Name="redSlider"
