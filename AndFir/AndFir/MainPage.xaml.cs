@@ -10,7 +10,7 @@ namespace AndFir
 {
     public partial class MainPage : ContentPage
     {
-        Button box_btn, entry_btn, date_btn,ss_btn, timer_btn;
+        Button box_btn, entry_btn, date_btn,ss_btn, timer_btn, rgb_btn;
         public MainPage()
         {
             box_btn = new Button
@@ -53,9 +53,17 @@ namespace AndFir
             };
             timer_btn.Clicked += Start_Pages;
 
+            rgb_btn = new Button
+            {
+                Text = "RGB",
+                BackgroundColor = Color.Blue,
+                TextColor = Color.Black
+            };
+            rgb_btn.Clicked += Start_Pages;
+
             StackLayout st = new StackLayout
             {
-                Children = { box_btn, entry_btn, date_btn, ss_btn, timer_btn }
+                Children = { box_btn, entry_btn, date_btn, ss_btn, timer_btn, rgb_btn }
             };
             st.BackgroundColor = Color.Black;
             Content = st;
@@ -83,6 +91,10 @@ namespace AndFir
             else if (sender == timer_btn)
             {
                 await Navigation.PushAsync(new Timer_Page());
+            }
+            else if (sender == rgb_btn)
+            {
+                await Navigation.PushAsync(new RGB_Page());
             }
         }
         

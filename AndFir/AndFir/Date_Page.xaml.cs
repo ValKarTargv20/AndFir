@@ -82,7 +82,12 @@ namespace AndFir
                     lbl.BackgroundColor = Color.Red;
                     var dur = TimeSpan.FromSeconds(0.3);
                     Vibration.Vibrate(dur);
+                    lbl.Text = "Aeg on läbi";
                     break;
+                }
+                else if (time < 0)
+                {
+                    lbl.Text = "Aeg on " + dp.Date.ToString("d") + " " + DateTime.Now.TimeOfDay.ToString();
                 }
             }
         }
