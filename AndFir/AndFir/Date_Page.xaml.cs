@@ -17,6 +17,7 @@ namespace AndFir
         TimePicker tp;
         public Date_Page()
         {
+            InitializeComponent();
             lbl = new Label
             {
                 Text = "Vali mingi kuupaev voi kellaaeg",

@@ -18,6 +18,7 @@ namespace AndFir
 
         public Stp_Sl_Page()
         {
+            InitializeComponent();
             lbl = new Label
             {
                 Text = "Text",

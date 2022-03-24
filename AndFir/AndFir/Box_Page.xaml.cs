@@ -12,6 +12,7 @@ namespace AndFir
         Random rdn;
         public Box_Page()
         {
+            InitializeComponent();
             box = new BoxView
             {
                 Color = Color.FromRgb(12, 128, 8),

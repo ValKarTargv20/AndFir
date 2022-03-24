@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace AndFir
 {
     public partial class MainPage : ContentPage
     {
-        Button box_btn, entry_btn, date_btn,ss_btn, timer_btn, rgb_btn, frame_btn;
+        Button box_btn, entry_btn, date_btn,ss_btn, timer_btn, rgb_btn, frame_btn, image_btn;
         public MainPage()
         {
             box_btn = new Button
@@ -69,9 +64,18 @@ namespace AndFir
             };
             frame_btn.Clicked += Start_Pages;
 
+            image_btn = new Button
+            {
+                Text = "Images",
+                BackgroundColor = Color.Firebrick,
+                TextColor = Color.Black
+            };
+            image_btn.Clicked += Start_Pages;
+
+
             StackLayout st = new StackLayout
             {
-                Children = { box_btn, entry_btn, date_btn, ss_btn, timer_btn, rgb_btn, frame_btn }
+                Children = { box_btn, entry_btn, date_btn, ss_btn, timer_btn, rgb_btn, frame_btn, image_btn }
             };
             st.BackgroundColor = Color.Black;
             Content = st;
@@ -107,6 +111,10 @@ namespace AndFir
             else if (sender == frame_btn)
             {
                 await Navigation.PushAsync(new Frame_Page());
+            }
+            else if (sender == image_btn)
+            {
+                await Navigation.PushAsync(new Image_Page());
             }
         }
         

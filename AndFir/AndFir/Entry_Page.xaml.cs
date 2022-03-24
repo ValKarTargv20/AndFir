@@ -12,10 +12,12 @@ namespace AndFir
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Entry_Page : ContentPage
     {
+
         Label lbl;
         Editor editor;
         public Entry_Page()
         {
+            InitializeComponent();
             lbl = new Label
             {
                 Text = "Pealkiri",
