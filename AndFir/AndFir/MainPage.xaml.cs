@@ -5,7 +5,7 @@ namespace AndFir
 {
     public partial class MainPage : ContentPage
     {
-        Button box_btn, entry_btn, date_btn,ss_btn, timer_btn, rgb_btn, frame_btn, image_btn;
+        Button box_btn, entry_btn, date_btn,ss_btn, timer_btn, rgb_btn, frame_btn, image_btn, picker_btn, table_btn;
         public MainPage()
         {
             box_btn = new Button
@@ -72,10 +72,25 @@ namespace AndFir
             };
             image_btn.Clicked += Start_Pages;
 
+            picker_btn = new Button
+            {
+                Text = "Picker",
+                BackgroundColor = Color.Coral,
+                TextColor = Color.Black
+            };
+            picker_btn.Clicked += Start_Pages;
+
+            table_btn = new Button
+            {
+                Text = "Table",
+                BackgroundColor = Color.YellowGreen,
+                TextColor = Color.Black
+            };
+            table_btn.Clicked += Start_Pages;
 
             StackLayout st = new StackLayout
             {
-                Children = { box_btn, entry_btn, date_btn, ss_btn, timer_btn, rgb_btn, frame_btn, image_btn }
+                Children = { box_btn, entry_btn, date_btn, ss_btn, timer_btn, rgb_btn, frame_btn, image_btn, picker_btn,table_btn }
             };
             st.BackgroundColor = Color.Black;
             Content = st;
@@ -116,7 +131,14 @@ namespace AndFir
             {
                 await Navigation.PushAsync(new Image_Page());
             }
+            else if (sender == picker_btn)
+            {
+                await Navigation.PushAsync(new Picker_Page());
+            }
+            else if (sender == table_btn)
+            {
+                await Navigation.PushAsync(new Table_Page());
+            }
         }
-        
     }
 }
