@@ -43,7 +43,7 @@ namespace AndFir
                 WidthRequest = 20,
                 HeightRequest=20
             };
-            home_btn.Clicked += Home_btn_Clicked;
+            home_btn.Clicked += btn_Clicked;
 
             back_btn = new ImageButton
             {
@@ -51,24 +51,30 @@ namespace AndFir
                 WidthRequest = 20,
                 HeightRequest = 20
             };
-            back_btn.Clicked += Back_btn_Clicked;
+            back_btn.Clicked += btn_Clicked;
 
             new_btn = new Button
             {
-                Text = "★",
-                BackgroundColor = Color.Accent,
+                Text = "#",
+                BackgroundColor = Color.White,
                 TextColor = Color.Black,
                 WidthRequest = 20,
                 HeightRequest = 20
             };
-            new_btn.Clicked += New_btn_Clicked;
+            new_btn.Clicked += btn_Clicked;
 
             webView = new WebView { };
             SwipeGestureRecognizer swipe = new SwipeGestureRecognizer();
             swipe.Swiped += Swipe_Swiped;
             swipe.Direction = SwipeDirection.Right;
 
-            line = new Entry { Placeholder = "Kirjuta webileht", PlaceholderColor = Color.Black, TextColor = Color.Black };
+            line = new Entry { 
+                Placeholder = "Kirjuta webileht",
+                PlaceholderColor = Color.Black,
+                TextColor = Color.Black,
+                WidthRequest=180,
+                HeightRequest=10
+            };
             line.Completed += Line_Completed;
 
             StackLayout buttons = new StackLayout
@@ -81,7 +87,7 @@ namespace AndFir
             {
                 Content = buttons,
                 BorderColor = Color.Lime,
-                //BackgroundColor=Color.Yellow,
+                BackgroundColor=Color.Yellow,
                 CornerRadius = 10,
                 HeightRequest = 20,
                 WidthRequest = 400,
@@ -95,32 +101,40 @@ namespace AndFir
             Content = st;
         }
 
-        private void Home_btn_Clicked(object sender, EventArgs e)
+        private void btn_Clicked(object sender, EventArgs e)
         {
-            new UrlWebViewSource { Url = lehed[3] };
-        }
-
-        private void Back_btn_Clicked(object sender, EventArgs e)
-        {
-            if (webView.CanGoBack)
+            if(sender== home_btn)
             {
-                webView.GoBack();
+                new UrlWebViewSource { Url = lehed[3] };
+            }
+            else if (sender== back_btn)
+            {
+                if (webView.CanGoBack)
+                {
+                    webView.GoBack();
+                }
+            }
+            else if(sender== new_btn)
+            {
+                lehed.Add("https://www." + line.Text);
+                picker.Items.Add("https://www." + line.Text);
             }
         }
 
         private void Line_Completed(object sender, EventArgs e)
         {
-            webView.Source = "https://www." + line.Text;
+            if (webView != null)
+            {
+                st.Children.Remove(webView);
+            }
+            webView = new WebView
+            {
+                Source = "https://www." + line.Text,
+                VerticalOptions = LayoutOptions.FillAndExpand
+            };
             st.Children.Add(webView);
-        }
 
-        private void New_btn_Clicked(object sender, EventArgs e)
-        {
-           
-            lehed.Add("https://www." + line.Text);
-            picker.Items.Add("https://www." + line.Text);
         }
-
 
         private void Swipe_Swiped(object sender, SwipedEventArgs e)
         {
