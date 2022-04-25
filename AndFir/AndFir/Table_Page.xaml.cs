@@ -14,8 +14,8 @@ namespace AndFir
         Button sms_btn;
         Button call_btn;
         Button email_btn;
-        StackLayout st;
-        ViewCell vc;
+        StackLayout sl;
+        //ViewCell vc;
         EntryCell tel, post,te;
         public Table_Page()
         {
@@ -40,14 +40,14 @@ namespace AndFir
                 Placeholder = "Sissesta oma teskti:",
                 Keyboard = Keyboard.Default
             };
-            var st = new StackLayout
+            sl = new StackLayout
             {
                 Children = { call_btn, sms_btn, email_btn },
                 Orientation = StackOrientation.Horizontal
             };
             nuppud = new TableSection
             {
-                new ViewCell() { View=st},
+                new ViewCell() { View=sl},
             };
             sc = new SwitchCell { Text = "Näita veel" };
             sc.OnChanged += Sc_OnChanged;

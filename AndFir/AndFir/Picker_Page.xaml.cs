@@ -40,16 +40,16 @@ namespace AndFir
             home_btn = new ImageButton
             {
                 Source = "Home.png",
-                WidthRequest = 20,
-                HeightRequest=20
+                WidthRequest = 40,
+                HeightRequest = 40
             };
             home_btn.Clicked += btn_Clicked;
 
             back_btn = new ImageButton
             {
                 Source = "Next.png",
-                WidthRequest = 20,
-                HeightRequest = 20
+                WidthRequest = 40,
+                HeightRequest = 40
             };
             back_btn.Clicked += btn_Clicked;
 
@@ -58,8 +58,8 @@ namespace AndFir
                 Text = "#",
                 BackgroundColor = Color.White,
                 TextColor = Color.Black,
-                WidthRequest = 20,
-                HeightRequest = 20
+                WidthRequest = 40,
+                HeightRequest = 40
             };
             new_btn.Clicked += btn_Clicked;
 
@@ -72,8 +72,8 @@ namespace AndFir
                 Placeholder = "Kirjuta webileht",
                 PlaceholderColor = Color.Black,
                 TextColor = Color.Black,
-                WidthRequest=180,
-                HeightRequest=10
+                WidthRequest = 180,
+                HeightRequest = 40
             };
             line.Completed += Line_Completed;
 
@@ -89,7 +89,7 @@ namespace AndFir
                 BorderColor = Color.Lime,
                 BackgroundColor=Color.Yellow,
                 CornerRadius = 10,
-                HeightRequest = 20,
+                HeightRequest = 60,
                 WidthRequest = 400,
                 VerticalOptions=LayoutOptions.Start,
                 //HorizontalOptions=LayoutOptions.CenterAndExpand,
@@ -103,22 +103,23 @@ namespace AndFir
 
         private void btn_Clicked(object sender, EventArgs e)
         {
-            if(sender== home_btn)
+            if(sender == home_btn)
             {
-                new UrlWebViewSource { Url = lehed[3] };
+                webView.Source = new UrlWebViewSource { Url = lehed[3] };
             }
-            else if (sender== back_btn)
+            else if (sender == back_btn)
             {
                 if (webView.CanGoBack)
                 {
                     webView.GoBack();
                 }
             }
-            else if(sender== new_btn)
+            else if(sender == new_btn)
             {
                 lehed.Add("https://www." + line.Text);
                 picker.Items.Add("https://www." + line.Text);
             }
+            st.Children.Add(webView);
         }
 
         private void Line_Completed(object sender, EventArgs e)
