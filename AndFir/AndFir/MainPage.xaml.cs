@@ -5,7 +5,7 @@ namespace AndFir
 {
     public partial class MainPage : ContentPage
     {
-        Button box_btn, entry_btn, date_btn,ss_btn, timer_btn, rgb_btn, frame_btn, image_btn, picker_btn, table_btn;
+        Button box_btn, entry_btn, date_btn,ss_btn, timer_btn, rgb_btn, frame_btn, image_btn, picker_btn, table_btn, list_btn, country_btn;
         public MainPage()
         {
             box_btn = new Button
@@ -88,9 +88,25 @@ namespace AndFir
             };
             table_btn.Clicked += Start_Pages;
 
+            list_btn = new Button
+            {
+                Text="ListView",
+                BackgroundColor = Color.DarkOliveGreen,
+                TextColor = Color.Black
+            };
+            list_btn.Clicked += Start_Pages;
+
+            country_btn = new Button
+            {
+                Text = "Countries",
+                BackgroundColor = Color.CadetBlue,
+                TextColor = Color.Black
+            };
+            country_btn += Start_Pages;
+
             StackLayout st = new StackLayout
             {
-                Children = { box_btn, entry_btn, date_btn, ss_btn, timer_btn, rgb_btn, frame_btn, image_btn, picker_btn,table_btn }
+                Children = { box_btn, entry_btn, date_btn, ss_btn, timer_btn, rgb_btn, frame_btn, image_btn, picker_btn,table_btn , list_btn, country_btn }
             };
             st.BackgroundColor = Color.Black;
             Content = st;
@@ -139,6 +155,15 @@ namespace AndFir
             {
                 await Navigation.PushAsync(new Table_Page());
             }
+            else if (sender == list_btn)
+            {
+                await Navigation.PushAsync(new ListV_Page());
+            }
+            else if (sender == country_btn)
+            {
+                await Navigation.PushAsync(new Country_Page());
+            }
+            
         }
     }
 }
