@@ -102,7 +102,7 @@ namespace AndFir
                 BackgroundColor = Color.CadetBlue,
                 TextColor = Color.Black
             };
-            country_btn += Start_Pages;
+            country_btn.Clicked += Start_Pages;
 
             StackLayout st = new StackLayout
             {
